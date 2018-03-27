@@ -74,7 +74,7 @@ def getSensorValue(token, gateway, device, sensor_type, sensor_id):
     result = requests.get(url, headers=composeHeader(token))
     try:
         data = json.loads(result.text)
-        return data['value']
+        return int(str(data['value']).replace('[', '').replace(']', ''))
     except ValueError as e:
         print(e)
 
