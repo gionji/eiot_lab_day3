@@ -1,10 +1,12 @@
 import udooEiotLib as udooiot
 import json, time
 
+#### USERS PARAMETERS ################
 USERNAME  = "EIOT18_giovanni"
 PASSWORD  = "123qweASD"
-
 BOARD_ID  = '1d33c9d4e3172182' # you can get this value from the udoo.cluod web interface
+######################################
+
 DEVICE_ID = 'ttyMCC-' + BOARD_ID
 
 
