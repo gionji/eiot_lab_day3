@@ -69,20 +69,23 @@ def getGatewaysByCompany(token, companyId):
 def getSensorValue(token, gateway, device, sensor_type, sensor_id):
     url = IOT_URL + '/sensors/read/' + gateway + '/' + device + '/' + sensor_type + '/' + sensor_id
 
-    # print(url)
+    print  "Sensor value request sent on " + str(sensor_type) + " pin " + str(sensor_id) + "..."
+    #print(url)
     # print(composeHeader(token))
     result = requests.get(url, headers=composeHeader(token))
     try:
         data = json.loads(result.text)
-        return int(str(data['value']).replace('[', '').replace(']', ''))
-    except ValueError as e:
-        print(e)
+        value = int(str(data['value']).replace('[', '').replace(']', ''))
+    except:
+        value = -1
+
+    return value
 
 
 def getSensorHistory(token, gateway, device, sensor_type, sensor_id, history_type, limit):
     url = IOT_URL + '/sensors/history/' + history_type + '/' + gateway + '/' + device + '/' + sensor_type + '/' + sensor_id + '/' + str(limit)
 
-    # print(url)
+    #print(url)
     # print(composeHeader(token))
     result = requests.get(url, headers=composeHeader(token))
     try:
@@ -95,6 +98,7 @@ def getSensorHistory(token, gateway, device, sensor_type, sensor_id, history_typ
 def sendActuatorWrite(token, gateway, device, actuator_type, actuator_id, value):
     url = IOT_URL + '/sensors/write/' + gateway + '/' + device + '/' + actuator_type + '/' + actuator_id + '/' + value
 
+    print "Actuator command sent on pin " + str(actuator_id) + "..."
     # print(url)
     # print(composeHeader(token))
     result = requests.get(url, headers=composeHeader(token))
@@ -102,4 +106,5 @@ def sendActuatorWrite(token, gateway, device, actuator_type, actuator_id, value)
         data = json.loads(result.text)
         return data
     except ValueError as e:
-        print(e)
+        print("")
+
