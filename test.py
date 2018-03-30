@@ -17,7 +17,7 @@ if __name__ == '__main__':
     company = udooiot.getCompany(companies)
 
     ## get the gateway list
-    networkStatus = udooiot.getGatewaysByCompany(token, company['company_id'])
+    # networkStatus = udooiot.getGatewaysByCompany(token, company['company_id'])
 
     ## print the network structure
     print(json.dumps(networkStatus, indent=4, sort_keys=True))
