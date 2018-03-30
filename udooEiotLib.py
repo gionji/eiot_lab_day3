@@ -98,7 +98,7 @@ def getSensorHistory(token, gateway, device, sensor_type, sensor_id, history_typ
 def sendActuatorWrite(token, gateway, device, actuator_type, actuator_id, value):
     url = IOT_URL + '/sensors/write/' + gateway + '/' + device + '/' + actuator_type + '/' + actuator_id + '/' + value
 
-    print "Actuator command sent on pin " + str(actuator_id) + "..."
+    print "Actuator " + str(actuator_type) + " command sent on pin " + str(actuator_id) + "..."
     # print(url)
     # print(composeHeader(token))
     result = requests.get(url, headers=composeHeader(token))
